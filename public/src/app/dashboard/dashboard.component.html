@@ -1,0 +1,26 @@
+<h2>Bucket Lists  &nbsp; <a href [routerLink] = '["/dashboard"]'>Home </a>  &nbsp; <a href (click) = "logout()"> Logout </a> </h2>
+
+<hr>
+
+<!-- Bucket Lists -->
+
+<h1>Welcome {{ user.name }}!  </h1>
+
+<form #f ='ngForm' (submit)="addBucket()">
+  <p><label>Title: </label>
+  <input type="text" [(ngModel)]="bucket.title" name="title"
+  #dateChecker = 'ngModel'
+  required /></p>
+
+  <p><label>Description:</label>
+  <textarea [(ngModel)]="bucket.description" name="description" rows="1" cols="80"></textarea>  
+  </p>
+
+  <p><label>Friend:</label>
+  <select name="friend">
+    <option *ngFor="let friend of otherUsers"> {{ friend }} </option>
+  </select>
+  
+  <p><input type="submit" value="Add" [disabled]="f.invalid" ></p>
+  
+</form>
